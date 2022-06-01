@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div id="fullpage">
+    <div class="section active" id="home-banner">
+        <a href="#firstPage"></a>
+        <div class="home-banner-text">
+            <h1>위성사진을 활용한 도시 정비 시스템</h1>
+            <!-- <h3>AI가 먼저 찾아냅니다</h3> -->
+        </div>
+    </div>
+    <div class="section" id="home-info1">
+        <a href="#secondPage"></a>
+        <div class="home-banner-text">
+            <h1>AI가 먼저 찾아냅니다</h1>
+            <!-- <h3>AI가 먼저 찾아냅니다</h3> -->
+        </div>
+    </div>
+    <div class="section" id="home-info2">
+        <a href="#thirdPage"></a>
+        <div class="home-banner-text">
+            <h1>AI가 먼저 찾아냅니다</h1>
+            <!-- <h3>AI가 먼저 찾아냅니다</h3> -->
+        </div>
+    </div>
+</div>
+
+<script>
+  new fullpage('#fullpage', {
+	//options here
+    autoScrolling: true,
+    scrollOverflow: true,
+	scrollHorizontally: true,
+    anchors: ['firstPage', 'secondPage', 'thirdPage'],
+    navigation: true,
+    navigationPosition: 'right',
+    navigationTooltips: ['인트로', '신속함', '정확함'],
+    showActiveTooltip: true,
+	
+    // //changing the value for the property `perspective`
+    // cards: tuue,
+    // cardOptions: {perspective: 100, fadeContent: true, fadeBackground: true},
+
+    });
+    
+   
+</script>
+{% endblock %}
