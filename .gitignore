@@ -367,4 +367,7 @@ fabric.properties
 # Ignore code-workspaces
 *.code-workspace
 
+# Secrets Files
+secrets.json
+
 # End of https://www.toptal.com/developers/gitignore/api/python,django,visualstudiocode,pycharm+all

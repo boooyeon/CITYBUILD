@@ -1,33 +1,29 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-<form action="doJoin" method="POST" class="joinForm" onsubmit="DoJoinForm__submit(this); return false;">
-    {% csrf_token %}                                                                                           
-    <h1><a href="{% url 'home' %}">도로정찰대</a></h1>
-    <div class="textForm">
-      <input name="username" type="text" class="id" placeholder="아이디">
-      </input>
-    </div>
-    <div class="textForm">
-      <input name="password1" type="password" class="pw" placeholder="비밀번호">
-    </div>
-     <div class="textForm">
-      <input name="password2" type="password" class="pw" placeholder="비밀번호 확인">
-    </div>
-    <div class="textForm">
-      <input name="name" type="text" class="name" placeholder="이름">
-    </div>
-     <div class="textForm">
-      <input name="email" type="text" class="email" placeholder="이메일">
-    </div>
-    <div class="textForm">
-      <input name="nickname" type="text" class="nickname" placeholder="닉네임">
-    </div>
-    <div class="textForm">
-      <input name="cellphoneNo" type="number" class="cellphoneNo" placeholder="전화번호">
-    </div>
-    <input type="submit" class="btn" value="J O I N"/>
-  </form>
+    <form action="{% url 'signup' %}" method="POST" class="joinForm" onsubmit="DoJoinForm__submit(this); return false;">
+        {% csrf_token %}
+        <h1><a href="{% url 'home' %}">도로정찰대</a></h1>
+        {% include "form_errors.html" %}
+        <div class="textForm">
+            <input name="user_id" type="text" class="id" placeholder="아이디">
+        </div>
+        <div class="textForm">
+            <input name="password1" type="password" class="pw" placeholder="비밀번호">
+        </div>
+        <div class="textForm">
+            <input name="password2" type="password" class="pw" placeholder="비밀번호 확인">
+        </div>
+        <div class="textForm">
+            <input name="username" type="text" class="name" placeholder="이름">
+        </div>
+        <div class="textForm">
+            <input name="email" type="email" class="email" placeholder="이메일">
+        </div>
+        <div class="textForm">
+            <input name="phone" type="number" class="cellphoneNo" placeholder="전화번호">
+        </div>
+        <input type="submit" class="btn" value="J O I N"/>
+    </form>
 
 {% endblock %}
