@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form action="{% url 'signin' %}" method="POST" class="loginForm" onsubmit="DoLoginForm__submit(this); return false;">
+                                                                                               
+    <h1><a href="{% url 'home' %}">도로정찰대</a></h1>
+    {% csrf_token %}
+    <div class="textForm">
+      <input name="username" type="text" class="id" placeholder="아이디">
+      </input>
+    </div>
+    <div class="textForm">
+      <input name="password" type="password" class="pw" placeholder="비밀번호">
+    </div>
+     
+    <input type="submit" class="btn" value="L O G I N"/>
+  </form>
+
+{% endblock %}

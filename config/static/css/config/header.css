@@ -1,0 +1,31 @@
+/* header 영역 */
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    z-index: 5;
+    color: white;
+   
+}
+.logo {
+    font-size: x-large;
+    font-style: italic;
+    display: flex;
+    flex-direction: row; /* 수평 정렬 */
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1%;
+    margin-left: 3%;
+    
+}
+.account {
+    width: 10%;
+    font-style: italic;
+    display: flex;
+    flex-direction: row; /* 수평 정렬 */
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1%;
+    margin-right: 2%;
+}
