@@ -6,18 +6,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>도로 정찰대🌆</title>
+    <!-- config관련 css -->
     <link rel="stylesheet" href="{% static 'css/config/style.css' %}"/>
     <link rel="stylesheet" href="{% static 'css/config/footer.css' %}"/>
     <link rel="stylesheet" href="{% static 'css/config/header.css' %}"/>
+    <!-- Homeapp관련 css -->
     <link rel="stylesheet" href="{% static 'css/Homeapp/home.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/Homeapp/fullpage.css' %}"/>
     <link rel="stylesheet" href="{% static 'css/Accountsapp/signup.css' %}"/>
     <link rel="stylesheet" href="{% static 'css/Accountsapp/signin.css' %}"/>
-    <link rel="stylesheet" href="{% static 'css/Homeapp/fullpage.css' %}"/>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" crossorigin="anonymous"></script>
+    <!-- Mainapp관련 css -->
+    <link rel="stylesheet" href="{% static 'css/Mainapp/main.css' %}"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" crossorigin="anonymous"></script>
     <script src='https://code.jquery.com/jquery-3.2.1.min.js' crossorigin="anonymous"></script>
+    <!-- Homeapp관련 js -->
     <script type="text/javascript" src="{% static 'js/Homeapp/fullpage.extensions.min.js' %}" crossorigin="anonymous"></script>
     <script type="text/javascript" src="{% static 'js/Homeapp/fullpage.js' %}" crossorigin="anonymous"></script>
+    <!-- Mainapp(지도)관련 js -->
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c64160305d4f205abb61841576b2d5f0"></script>
 </head>
 <body>
     

@@ -25,6 +25,6 @@ urlpatterns = [
     path("", Homeapp.views.home, name="home"),
     path('home/', include('Homeapp.urls')),
     path('accounts/', include('Accountsapp.urls')),
-    # path('main/', include('Mainapp.urls')),
+    path('main/', include('Mainapp.urls')),
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
