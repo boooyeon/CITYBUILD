@@ -17,14 +17,14 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
-from Homeapp import views
-
+import Homeapp.views
+import Accountsapp.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("", views.home),
+    path("", Homeapp.views.home, name="home"),
     path('home/', include('Homeapp.urls')),
+    path('accounts/', include('Accountsapp.urls')),
     # path('main/', include('Mainapp.urls')),
-    # path('accounts/', include('Accountapp.urls')),
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

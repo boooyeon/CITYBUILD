@@ -10,15 +10,22 @@
     <link rel="stylesheet" href="{% static 'css/config/footer.css' %}"/>
     <link rel="stylesheet" href="{% static 'css/config/header.css' %}"/>
     <link rel="stylesheet" href="{% static 'css/Homeapp/home.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/Accountsapp/signup.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/Accountsapp/signin.css' %}"/>
     <link rel="stylesheet" href="{% static 'css/Homeapp/fullpage.css' %}"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" crossorigin="anonymous"></script>
+    <script src='https://code.jquery.com/jquery-3.2.1.min.js' crossorigin="anonymous"></script>
     <script type="text/javascript" src="{% static 'js/Homeapp/fullpage.extensions.min.js' %}" crossorigin="anonymous"></script>
     <script type="text/javascript" src="{% static 'js/Homeapp/fullpage.js' %}" crossorigin="anonymous"></script>
 </head>
 <body>
-    {% include 'header.html' %} 
+    
     {% block content %}
-    {% endblock %} 
+    {% endblock %}  
+
+
+    
 </body>
 
 </html>

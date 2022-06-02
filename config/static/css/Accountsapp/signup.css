@@ -1,0 +1,23 @@
+.joinForm {
+    position:absolute;
+    width:400px;
+    height:400px;
+    padding: 30px, 20px;
+    background-color:#FFFFFF;
+    text-align:center;
+    top:35%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    border-radius: 15px;
+}
+
+.joinForm h2 {
+    text-align: center;
+    margin: 30px;
+}
+
+.textForm {
+    border-bottom: 2px solid #adadad;
+    margin: 30px;
+    padding: 10px 10px;
+}
