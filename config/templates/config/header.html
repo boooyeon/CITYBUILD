@@ -4,31 +4,28 @@
         <a href="{% url 'home' %}">도로정찰대</a>
     </div>
     {% if user.is_authenticated %}
-    <div class="mypage">
-        <a href="{% url 'mypage' %}">환영합니다. {{ user.username }} 님!</a></li>
-    </div>
-    <form id="logout" method="POST" action="{% url 'logout' %}">
-        {% csrf_token %} <input type="hidden" />
-    </form>
+        {#        <div class="mypage">#}
+        {#            <a href="{% url 'mypage' %}">환영합니다. {{ user.username }} 님!</a>#}
+        {#        </div>#}
+        <a href="{% url 'logout' %}">logout</a>
     {% else %}
-    <div class="account">
-        <a href="{% url 'home' %}">로그인</a></li>
-        <a href="{% url 'home' %}">회원가입</a>
-    </div>
+        <div class="account">
+            <a href="{% url 'login' %}">로그인</a>
+            <a href="{% url 'signup' %}">회원가입</a>
+        </div>
     {% endif %}
 </div>
 
 <script type="text/javascript">
-    $(document).ready(function(){
-      $(window).scroll(function(){
-        var scroll = $(window).scrollTop();
-        if (scroll > 1) {
-          $(".header").css("color" , "white");
-        }
-        else{
-          $(".header").css("color" , "black");   
-        }
-      })
+    $(document).ready(function () {
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            if (scroll > 1) {
+                $(".header").css("color", "white");
+            } else {
+                $(".header").css("color", "black");
+            }
+        })
     });
 
 </script>

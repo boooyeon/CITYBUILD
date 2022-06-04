@@ -3,90 +3,89 @@
 {% load static %}
 
 {% block content %}
-{% include 'header.html' %} 
-<div id="fullpage">
-    <div class="section active" id="home-banner">
-        <a href="#firstPage"></a>
-        <div class="home-banner-text">
-            <h1>위성사진을 활용한 도시 정비 시스템</h1>
-            <button class="w-btn w-btn-indigo" type="button" onclick="location.href='#secondPage' ">MORE</button>
-            <!-- <h3>AI가 먼저 찾아냅니다</h3> -->
+    {% include 'header.html' %}
+    <div id="fullpage">
+        <div class="section active" id="home-banner">
+            <a href="#firstPage"></a>
+            <div class="home-banner-text">
+                <h1>위성사진을 활용한 도시 정비 시스템</h1>
+                <button class="w-btn w-btn-indigo" type="button" onclick="location.href='#secondPage' ">MORE</button>
+                <!-- <h3>AI가 먼저 찾아냅니다</h3> -->
+            </div>
         </div>
-    </div>
-    <div class="section" id="home-info">
-        <a href="#secondPage"></a>
-        <div class="home-info-title">
-            <h1>SERVICES</h1>
-            <!-- <p>1년에 한번 많은 시간과 돈이 들었던 도로 시찰을 AI로 3개월 마다 단 몇 시간만에 찾아냅니다</p> -->
+        <div class="section" id="home-info">
+            <a href="#secondPage"></a>
+            <div class="home-info-title">
+                <h1>SERVICES</h1>
+                <!-- <p>1년에 한번 많은 시간과 돈이 들었던 도로 시찰을 AI로 3개월 마다 단 몇 시간만에 찾아냅니다</p> -->
+            </div>
+            <div class="home-info-content">
+                <div>
+                    <img id="home-info" src="{% static 'img/repair-1.png' %}" alt="..."/>
+                    <div class="home-info-text">
+                        <h1>AI가 먼저 찾아냅니다</h1>
+                        <p>1년에 한번 많은 시간과 돈이 들었던 도로 시찰을<br> AI로 3개월 마다 단 몇 시간만에 찾아냅니다</p>
+                    </div>
+                </div>
+                <div>
+                    <img id="home-info" src="{% static 'img/bg-1.jpg' %}" alt="..."/>
+                    <div class="home-info-text">
+                        <h1>AI가 먼저 찾아냅니다</h1>
+                        <p>1년에 한번 많은 시간과 돈이 들었던 도로 시찰을<br> AI로 3개월 마다 단 몇 시간만에 찾아냅니다</p>
+                    </div>
+                </div>
+                <div>
+                    <img id="home-info" src="{% static 'img/bg-2.jpg' %}" alt="..."/>
+                    <div class="home-info-text">
+                        <h1>AI가 먼저 찾아냅니다</h1>
+                        <p>1년에 한번 많은 시간과 돈이 들었던 도로 시찰을<br> AI로 3개월 마다 단 몇 시간만에 찾아냅니다</p>
+                    </div>
+                </div>
+
+            </div>
         </div>
-        <div class="home-info-content">
-            <div>
-                <img id="home-info" src="{% static 'img/repair-1.png' %}" alt="..." />
-                <div class="home-info-text">
-                    <h1>AI가 먼저 찾아냅니다</h1>
-                    <p>1년에 한번 많은 시간과 돈이 들었던 도로 시찰을<br> AI로 3개월 마다 단 몇 시간만에 찾아냅니다</p>
+        <div class="section" id="home-portfolio">
+            <a href="#thirdPage"></a>
+            <div class="home-portfolio-title">
+                <h1>PORTFOLIO</h1>
+                <!-- <p>1년에 한번 많은 시간과 돈이 들었던 도로 시찰을 AI로 3개월 마다 단 몇 시간만에 찾아냅니다</p> -->
+            </div>
+            <div class="home-portfolio-content">
+                <div class="home-portfolio-row">
+                    <div><img id="home-portfolio" src="{% static 'img/repair-1.png' %}" alt="..."/></div>
+                    <div><img id="home-portfolio" src="{% static 'img/repair-1.png' %}" alt="..."/></div>
+                    <div><img id="home-portfolio" src="{% static 'img/repair-1.png' %}" alt="..."/></div>
+                </div>
+                <div class="home-portfolio-row">
+                    <div><img id="home-portfolio" src="{% static 'img/repair-1.png' %}" alt="..."/></div>
+                    <div><img id="home-portfolio" src="{% static 'img/repair-1.png' %}" alt="..."/></div>
+                    <div><img id="home-portfolio" src="{% static 'img/repair-1.png' %}" alt="..."/></div>
                 </div>
             </div>
-            <div>
-                <img id="home-info" src="{% static 'img/bg-1.jpg' %}" alt="..." />
-                <div class="home-info-text">
-                    <h1>AI가 먼저 찾아냅니다</h1>
-                    <p>1년에 한번 많은 시간과 돈이 들었던 도로 시찰을<br> AI로 3개월 마다 단 몇 시간만에 찾아냅니다</p>
-                </div>
-            </div>
-            <div>
-                <img id="home-info" src="{% static 'img/bg-2.jpg' %}" alt="..." />
-                <div class="home-info-text">
-                    <h1>AI가 먼저 찾아냅니다</h1>
-                    <p>1년에 한번 많은 시간과 돈이 들었던 도로 시찰을<br> AI로 3개월 마다 단 몇 시간만에 찾아냅니다</p>
-                </div>
-            </div>
-            
+            {% include 'footer.html' %}
         </div>
     </div>
-    <div class="section" id="home-portfolio">
-        <a href="#thirdPage"></a>
-        <div class="home-portfolio-title">
-            <h1>PORTFOLIO</h1>
-            <!-- <p>1년에 한번 많은 시간과 돈이 들었던 도로 시찰을 AI로 3개월 마다 단 몇 시간만에 찾아냅니다</p> -->
-        </div>
-        <div class="home-portfolio-content">
-            <div class="home-portfolio-row">
-                <div><img id="home-portfolio" src="{% static 'img/repair-1.png' %}" alt="..." /></div>
-                <div><img id="home-portfolio" src="{% static 'img/repair-1.png' %}" alt="..." /></div>
-                <div><img id="home-portfolio" src="{% static 'img/repair-1.png' %}" alt="..." /></div>
-            </div>
-            <div class="home-portfolio-row">
-                <div><img id="home-portfolio" src="{% static 'img/repair-1.png' %}" alt="..." /></div>
-                <div><img id="home-portfolio" src="{% static 'img/repair-1.png' %}" alt="..." /></div>
-                <div><img id="home-portfolio" src="{% static 'img/repair-1.png' %}" alt="..." /></div>
-            </div>
-        </div>
-        {% include 'footer.html' %}
-    </div>
-</div>
 
-<script>
-  new fullpage('#fullpage', {
-	//options here
-    autoScrolling: false,
-    scrollOverflow: true,
-	scrollHorizontally: true,
-    anchors: ['firstPage', 'secondPage', 'thirdPage'],
-    navigation: true,
-    navigationPosition: 'right',
-    navigationTooltips: ['인트로', '서비스', '포트폴리오'],
-    showActiveTooltip: true,
-	cardsEffect: true,
-    });
-    
-    // //changing the value for the property `perspective`
-    // fullpage_api.cards.setOption('perspective', 500);
+    <script>
+        new fullpage('#fullpage', {
+            //options here
+            autoScrolling: false,
+            scrollOverflow: true,
+            scrollHorizontally: true,
+            anchors: ['firstPage', 'secondPage', 'thirdPage'],
+            navigation: true,
+            navigationPosition: 'right',
+            navigationTooltips: ['인트로', '서비스', '포트폴리오'],
+            showActiveTooltip: true,
+            cardsEffect: true,
+        });
 
-    // //changing the value for the property `fadeContent`
-    // fullpage_api.cards.setOption('fadeContent', false);
+        // //changing the value for the property `perspective`
+        // fullpage_api.cards.setOption('perspective', 500);
 
-    
-   
-</script>
+        // //changing the value for the property `fadeContent`
+        // fullpage_api.cards.setOption('fadeContent', false);
+
+
+    </script>
 {% endblock %}
