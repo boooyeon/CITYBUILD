@@ -29,3 +29,14 @@
     margin-top: 1%;
     margin-right: 2%;
 }
+
+.mypage {
+    width: 25%;
+    font-style: italic;
+    display: flex;
+    flex-direction: row; /* 수평 정렬 */
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1%;
+    margin-right: 2%;
+}

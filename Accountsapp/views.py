@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_exempt
 
-from .forms import AuthenticationForm, RegistrationForm
+from .forms import AuthenticationForm, UserCreationForm
 
 LOGIN_URL = '/accounts/login'
 
@@ -11,10 +11,10 @@ LOGIN_URL = '/accounts/login'
 @csrf_exempt
 def signup(request):
     if request.user.is_authenticated:
-        return redirect('home')
+        return redirect('main')
     context = {}
     if request.method == 'POST':
-        form = RegistrationForm(request.POST)
+        form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('login')
@@ -27,7 +27,7 @@ def signup(request):
 @csrf_exempt
 def login_accounts(request):
     if request.user.is_authenticated:
-        return redirect('home')
+        return redirect('road')
 
     context = {}
 
@@ -39,7 +39,7 @@ def login_accounts(request):
             user = authenticate(user_id=user_id, password=password)
             if user:
                 login(request, user)
-                return redirect('home')
+                return redirect('road')
         else:
             context['form'] = form
 
