@@ -4,10 +4,12 @@
         <a href="{% url 'home' %}">도로정찰대</a>
     </div>
     {% if user.is_authenticated %}
-        {#        <div class="mypage">#}
-        {#            <a href="{% url 'mypage' %}">환영합니다. {{ user.username }} 님!</a>#}
-        {#        </div>#}
-        <a href="{% url 'logout' %}">logout</a>
+        <div class="mypage">
+            <a href="{% url 'mypage' %}">환영합니다. {{ user.username }} 님!</a>
+            <a href="{% url 'road' %}">도로 정찰</a>
+            <a href="{% url 'logout' %}">logout</a>
+        </div>
+        
     {% else %}
         <div class="account">
             <a href="{% url 'login' %}">로그인</a>

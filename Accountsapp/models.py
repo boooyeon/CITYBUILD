@@ -21,7 +21,7 @@ class UserManager(BaseUserManager):
             password=password,
             **extra_fields,
         )
-        user.is_staff = True
+        user.is_admin = True
         user.save(using=self._db)
         return user
 
@@ -34,7 +34,7 @@ class User(AbstractBaseUser):
     phone = models.CharField(max_length=16, unique=True)
     email_auth = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
-    is_staff = models.BooleanField(default=False)
+    is_admin = models.BooleanField(default=False)
 
     objects = UserManager()
 
@@ -44,3 +44,12 @@ class User(AbstractBaseUser):
     class Meta:
         db_table = 'User'
 
+    def has_perm(self, perm, obj=None):
+        return True
+
+    def has_module_perms(self, app_label):
+        return True
+
+    @property
+    def is_staff(self):
+        return self.is_admin

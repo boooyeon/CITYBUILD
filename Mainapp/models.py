@@ -1,6 +1,5 @@
 from django.db import models
 
-
 class Lane(models.Model):
     latitude = models.FloatField()
     longitude = models.FloatField()
@@ -24,7 +23,7 @@ class Address(models.Model):
 
 class Scrap(models.Model):
     lane_id = models.ForeignKey('Lane', on_delete=models.CASCADE, db_column='lane_id')
-    user_id = models.ForeignKey('User', on_delete=models.CASCADE, db_column='user_id')
+    user_id = models.ForeignKey('Accountsapp.User', on_delete=models.CASCADE, db_column='user_id')
 
     class Meta:
         db_table = 'Scrap'
