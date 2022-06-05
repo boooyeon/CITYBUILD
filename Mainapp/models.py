@@ -13,8 +13,8 @@ class Lane(models.Model):
 class Address(models.Model):
     lane_id = models.ForeignKey("Lane", related_name="lane", on_delete=models.CASCADE, db_column="lane_id")
     city = models.CharField(max_length=32)  # 시
-    county = models.CharField(max_length=32)  # 군
-    district = models.CharField(max_length=32)  # 구
+    county = models.CharField(max_length=32, blank=True, null=True)  # 군
+    district = models.CharField(max_length=32, blank=True, null=True)  # 구
     road_address = models.CharField(max_length=64)  # 도로명주소
 
     class Meta:
