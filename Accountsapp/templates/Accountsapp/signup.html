@@ -1,29 +1,38 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <form action="{% url 'signup' %}" method="POST" class="joinForm" onsubmit="DoJoinForm__submit(this); return false;">
-        {% csrf_token %}
-        <h1><a href="{% url 'home' %}">도로정찰대</a></h1>
-        {% include "form_errors.html" %}
-        <div class="textForm">
-            <input name="user_id" type="text" class="id" placeholder="아이디">
-        </div>
-        <div class="textForm">
-            <input name="password1" type="password" class="pw" placeholder="비밀번호">
-        </div>
-        <div class="textForm">
-            <input name="password2" type="password" class="pw" placeholder="비밀번호 확인">
-        </div>
-        <div class="textForm">
-            <input name="username" type="text" class="name" placeholder="이름">
-        </div>
-        <div class="textForm">
-            <input name="email" type="email" class="email" placeholder="이메일">
-        </div>
-        <div class="textForm">
-            <input name="phone" type="number" class="cellphoneNo" placeholder="전화번호">
-        </div>
-        <input type="submit" class="btn" value="J O I N"/>
-    </form>
+<div class="signup_container">
+    <div class="left_container">
+        <p id="user_confirm_text">도로정찰대<br>회원이신가요?</p>
+        <p id="login_guide_text">도로정찰을 원하시면 로그인 해주세요.</p>
+        <a class="signup_to_login_btn" href="{% url 'login' %}">로그인</a>
+    </div>
+    <div class="right_container">
+        <h1 id="logo_text"><a href="{% url 'home' %}">도로정찰대</a></h1>
+        <form action="{% url 'signup' %}" method="POST" class="joinForm" onsubmit="DoJoinForm__submit(this); return false;">
+            {% csrf_token %}
+            {% include "form_errors.html" %}
+            <div class="textForm">
+                <input name="user_id" type="text" class="id" placeholder="아이디">
+            </div>
+            <div class="textForm">
+                <input name="password1" type="password" class="pw" placeholder="비밀번호">
+            </div>
+            <div class="textForm">
+                <input name="password2" type="password" class="pw" placeholder="비밀번호 확인">
+            </div>
+            <div class="textForm">
+                <input name="username" type="text" class="name" placeholder="이름">
+            </div>
+            <div class="textForm">
+                <input name="email" type="email" class="email" placeholder="이메일">
+            </div>
+            <div class="textForm">
+                <input name="phone" type="tel" class="cellphoneNo" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" maxlength="13" placeholder="예) 010-1234-5678">
+            </div>
+            <input type="submit" class="btn" value="J O I N"/>
+        </form>
+    </div>
+</div>  
 
 {% endblock %}

@@ -1,27 +1,38 @@
-body {
-    background-image:#34495e;
+.signin_container{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url("/static/img/bg-2.jpg");
+    background-size: cover;
+    opacity: 0.9;
 }
-
+.logo_text{
+    font-style: italic;
+}
 .loginForm {
-    position:absolute;
     width:400px;
     height:400px;
     padding: 30px, 20px;
     background-color:#FFFFFF;
     text-align:center;
-    top:55%;
-    left:50%;
-    transform: translate(-50%,-50%);
     border-radius: 15px;
 }
 
-.loginForm h2 {
+.loginForm h1 {
     text-align: center;
-    margin: 30px;
+    margin: 40px;
 }
 
 .textForm {
     border-bottom: 2px solid #adadad;
     margin: 30px;
     padding: 10px 10px;
+}
+
+.login_to_signup{
+    font-size: x-small;
+    margin-bottom: 3%;
 }

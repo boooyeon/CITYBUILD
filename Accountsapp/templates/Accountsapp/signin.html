@@ -1,11 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+<div class="signin_container">
     <form action="{% url 'login' %}" method="POST" class="loginForm"
           onsubmit="DoLoginForm__submit(this); return false;">
-
-        <h1><a href="{% url 'home' %}">도로정찰대</a></h1>
+        <h1 id="logo_text"><a href="{% url 'home' %}">도로정찰대</a></h1>
         {% csrf_token %}
         {% include "form_errors.html" %}
         <div class="textForm">
@@ -14,8 +13,10 @@
         <div class="textForm">
             <input name="password" type="password" class="form-control" placeholder="비밀번호">
         </div>
-
+        <div class="login_to_signup">
+            <p>아직 회원이 아니신가요?&nbsp;&nbsp;&nbsp;&nbsp;<a class="" href="{% url 'signup' %}">회원가입</a></p>
+        </div>
         <input type="submit" class="btn" value="L O G I N"/>
     </form>
-
+</div>
 {% endblock %}
