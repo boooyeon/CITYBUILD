@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -141,7 +142,7 @@ STATICFILES_DIRS = [
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-MEDIA_URL = 'config/static/image/'
+MEDIA_URL = 'config/static/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, MEDIA_URL)
 
 # User 관련 설정
