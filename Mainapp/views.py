@@ -1,14 +1,15 @@
 from django.shortcuts import render
-from .models import Lane, Address
-# Create your views here.
-def main(request):
+from django.core import serializers
+from django.http import HttpResponse
+from .models import Lane
+
+def getApi(request):
     lanes = Lane.objects.all()
-    address = Address.objects.all()
-    context = {
-        'lanes' : lanes,
-        'address' : address,
-    }
-    return render(request, 'Mainapp/main.html', context)
+    lane_list = serializers.serialize('json', lanes)
+    return HttpResponse(lane_list, content_type=u"application/json; charset=utf-8")
+
+def main(request):
+    return render(request, 'Mainapp/main.html')
 
 def mypage(request):
     return render(request, 'Mainapp/mypage.html')
