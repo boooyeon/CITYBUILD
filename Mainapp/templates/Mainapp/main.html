@@ -22,23 +22,6 @@
         <div id="pagination"></div>
     </div>
 
-    <!-- 파손 차선 div => non-display -->
-    <div id="lane_lat" style="display: none">
-		{% for lane in lanes.all %}
-			{{ lane.latitude }},
-		{% endfor %}
-	</div>
-	<div id="lane_lng" style="display: none">
-		{% for lane in lanes.all %}
-			{{ lane.longitude }},
-		{% endfor %}
-	</div>
-    <div id="lane_img" style="display: none">
-		{% for lane in lanes.all %}
-			{{ lane.images }},
-		{% endfor %}
-	</div>
-
     <!-- 지도타입 컨트롤 div 입니다 -->
     <div class="custom_typecontrol radius_border">
         <span id="btnRoadmap" class="selected_btn" onclick="setMapType('roadmap')">지도</span>
