@@ -24,6 +24,11 @@
     <script type="text/javascript" src="{% static 'js/Homeapp/fullpage.js' %}" crossorigin="anonymous"></script>
     <!-- Mainapp(지도)관련 js -->
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c64160305d4f205abb61841576b2d5f0&libraries=services"></script>
+    <script>
+        $.ajaxSetup({
+          headers: { "X-CSRFToken": '{{csrf_token}}' }
+        });
+      </script>
 </head>
 <body>
     {% block content %}
