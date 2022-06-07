@@ -43,7 +43,6 @@
 </div>
 
 
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=발급받은 APP KEY를 사용하세요&libraries=services"></script>
 <script type="text/javascript">
     $.ajax({
         url: "{% url 'getApi' %}",
@@ -121,20 +120,24 @@
                         '    <div class="info">' + 
                         '        <div class="title">' + 
                                    data.road_address +
+                        '           인근' +
                         '          &nbsp; &nbsp; &nbsp;'  + 
+                        '           <div class="report" onclick="reportLane()" title="신고하기"></div>' +
+                        '           <div class="bookmark" onclick="scrapLane()" title="스크랩하기"></div>' + 
                         '           <div class="close" onclick="closeOverlay()" title="닫기"></div>' + 
                         '        </div>' + 
                         '        <div class="body">' + 
                         '            <div class="img">' +
-                        '                <img src="{{ data.images.url }}" width="200" height="70">' +
+                        '                <img src="/static/img/bg-2.jpg" width="320" height="200">' +
                         '           </div>' + 
                         '            <div class="desc">' + 
+          
                         '                <div class="ellipsis">' +
                         '                   위도: ' +
-                                            marker.getPosition().getLat() +   
-                        '                   <br>' + 
+                                            data.latitude +   
+                        // '                   <br>' + 
                         '                   경도: ' +
-                                            marker.getPosition().getLng() +
+                                            data.longitude +
                         '                   &nbsp; &nbsp; &nbsp;'  + 
                         '                </div>' + 
                         '            </div>' + 
