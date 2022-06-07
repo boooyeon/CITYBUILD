@@ -7,13 +7,13 @@
 #menu_wrap .option{text-align: center;}
 #menu_wrap .option p {margin:10px 0;}  
 #menu_wrap .option button {margin-left:5px;}
-input#keyword{width: 240px;}
+input#keyword{width: 200px;}
 button#address_search{width: 50px; height: 30px; background-color: gainsboro; border-radius: 5px; border: 0;}
 #placesList li {list-style: none;}
 #placesList .item {position:relative;border-bottom:1px solid #888;overflow: hidden;cursor: pointer;min-height: 65px;}
 #placesList .item span {display: block;margin-top:4px;}
-#placesList .item h5, #placesList .item .info {text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
-#placesList .item .info{padding:10px 0 10px 55px;}
+#placesList .item h5, #placesList .item .menu_info {text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
+#placesList .item .menu_info{padding:10px 0 10px 55px;}
 #placesList .info .gray {color:#8a8a8a;}
 #placesList .info .jibun {padding-left:26px;background:url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_jibun.png) no-repeat;}
 #placesList .info .tel {color:#009900;}
@@ -89,3 +89,4 @@ button#address_search{width: 50px; height: 30px; background-color: gainsboro; bo
 .info .img {position: absolute;top: 6px;left: 5px;width: 200px;height: 150px;border: 1px solid #ddd;color: #888;overflow: hidden;}
 .info:after {content: '';position: absolute;margin-left: -12px;left: 50%;bottom: 0;width: 22px;height: 12px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
 .info .link {color: #5085BB;}
+
