@@ -184,15 +184,40 @@
         var bookmark = document.createElement('div');
         bookmark.className = "bookmark";
 
-        var bookmark_img = document.createElement("img");
-        bookmark_img.setAttribute("src", "/static/img/bookmark-before.png");
-        bookmark_img.setAttribute("width","17");
-        bookmark_img.setAttribute("height","17");
-        bookmark.appendChild(bookmark_img);
+        var bookmark_before_img = document.createElement("img");
+        bookmark_before_img.setAttribute("src", "/static/img/bookmark-before.png");
+        bookmark_before_img.setAttribute("id", "before_img");
+        
+        bookmark_before_img.setAttribute("width","17");
+        bookmark_before_img.setAttribute("height","17");
+        bookmark.appendChild(bookmark_before_img);
 
         /* 북마크 이벤트 추가 */
+        var cnt = 1;
         bookmark.onclick = function() {
             console.log("북마크버튼 클릭")
+            var lane_id = pk
+            // console.log(lane_id)
+            var img1 = document.getElementById("before_img")
+            
+            if(cnt%2==1){
+                img1.src="/static/img/bookmark-after.png";
+            }    
+            else{
+                img1.src="/static/img/bookmark-before.png";
+            }
+            cnt++;
+
+            $.ajax({
+                url: "{% url 'scrap' %}",
+                async : false,
+                type : "post",
+                data :  {
+                        pk : pk,
+                        cnt : cnt
+                        },
+                dataType: "json",
+                })
             
         };
         
@@ -222,7 +247,7 @@
         body.appendChild(img);
 
         var body_img = document.createElement("img");
-        body_img.setAttribute("src", "/static/img/bg-2.jpg");
+        body_img.setAttribute("src", "/media/{{ data.images }}");
         body_img.setAttribute("width","340");
         body_img.setAttribute("height","200");
         img.appendChild(body_img);

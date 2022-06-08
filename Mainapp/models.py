@@ -23,4 +23,4 @@ class Scrap(models.Model):
 
     class Meta:
         db_table = 'Scrap'
-        managed = False
+        # managed = False
