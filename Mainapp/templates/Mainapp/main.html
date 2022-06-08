@@ -23,6 +23,24 @@
         <div id="pagination"></div>
     </div>
 
+    <!-- 신고하기 모달 창 div 입니다 -->
+    <div class="modal hidden">
+        <div class="bg"></div>
+        <div class="modalBox">
+          <div class="report_title"><h1>지도 정보 수정</h1></div>
+          <div class="report_content">
+            <form method="post">
+                {% csrf_token %}
+                <h2>수정 요청</h2>
+                <textarea type="text" class="report_text" placeholder="지도 정보에 문제가 있으신가요? 문의사항을 자유롭게 작성해주세요. &#13;&#10;-대구광역시 북구 대현로 며칠전에 차선 도색 되었어요.&#13;&#10;-대구광역시 북구 석형동 차선 손상이 심해요."></textarea>
+                <h2>파일 업로드</h2>
+                <input type="file" class="file_upload"> 
+            </form>
+          </div>
+          <button class="closeBtn">신고 하기</button>
+        </div>
+    </div>
+
     <!-- 지도타입 컨트롤 div 입니다 -->
     <div class="custom_typecontrol radius_border">
         <span id="btnRoadmap" class="selected_btn" onclick="setMapType('roadmap')">지도</span>
@@ -135,11 +153,26 @@
         report.className = "report";
 
         var report_img = document.createElement("img");
+        report_img.setAttribute("id","reportBtn");
         report_img.setAttribute("src", "/static/img/report.png");
         report_img.setAttribute("width","25");
         report_img.setAttribute("height","19");
         report.appendChild(report_img);
-        
+
+        /* 신고 이벤트 추가 -> 모달창 생성*/
+        report.onclick = function() {
+            console.log("신고버튼 클릭")
+            var modal = document.querySelector(".modal");
+            modal.classList.remove("hidden");
+        };
+        /* 신고 이벤트 추가 -> 모달창 끄기*/
+        modalcloseBtn = document.querySelector(".closeBtn")
+        modalcloseBtn.onclick = function() {
+            console.log("모달창 끄기 버튼 클릭")
+            var modal = document.querySelector(".modal");
+            modal.classList.add("hidden");
+        };
+
 
         // bookmark div 생성
         var bookmark = document.createElement('div');
@@ -150,6 +183,12 @@
         bookmark_img.setAttribute("width","17");
         bookmark_img.setAttribute("height","17");
         bookmark.appendChild(bookmark_img);
+
+        /* 북마크 이벤트 추가 */
+        bookmark.onclick = function() {
+            console.log("북마크버튼 클릭")
+            
+        };
         
         // closeBtn div 생성
         var closeBtn = document.createElement('div');
@@ -168,8 +207,6 @@
         // 모든 내용이 담긴 title div를 title의 부모 div인 info div에 넣기
         info.appendChild(title);
         
-
-
         var body = document.createElement('div');
         body.className = "body";
         info.appendChild(body);
@@ -365,6 +402,7 @@
             el.removeChild (el.lastChild);
         }
     }
+
 
     
 
