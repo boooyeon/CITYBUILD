@@ -2,7 +2,8 @@ from tabnanny import check
 from django.shortcuts import render
 from django.core import serializers
 from django.http import HttpResponse
-from .models import Lane, Report
+from Accountsapp.models import User
+from .models import Lane, Report, Scrap
 from django.db.models import Q
 
 
@@ -50,3 +51,25 @@ def reports_create(request):
 
     else: 
         return render(request, 'Mainapp/main.html')
+
+def scrap(request):
+    if request.method == 'POST':
+        pk = int(request.POST.get('pk',""))
+        cnt = int(request.POST.get('cnt',""))
+        lane = Lane.objects.get(id=pk)
+        
+        user_id = request.user.id
+        user = User.objects.get(id=user_id)
+        print(cnt, lane, user)
+
+        if(cnt%2==1):
+            scrap = Scrap.objects.get(lane_id=lane, user_id=user)
+            scrap.delete()
+            return render(request, 'Mainapp/main.html')
+        else:
+            scrap = Scrap.objects.create(lane_id=lane, user_id=user)
+            scrap.save()
+            return render(request, 'Mainapp/main.html')
+        
+
+        
