@@ -108,19 +108,27 @@ button {
   flex-direction: column;
   justify-self: center;
   align-items: center;
+  color: white;
 }
-.home-info-title h1{
+
+.home-info-content h1{
+  font-family: 'GothicA1-Light';
   color:white;
 }
-.home-info-content h1, p{
+.home-info-content span{
+  font-family: 'GothicA1-Light';
+  color:white;
+}
+.home-info-content p{
   font-family: 'GothicA1-Light';
   color:white;
 }
 
+
 .home-info-content{
   /* margin-right: 5%;
   margin-left: 5%; */
-  width: 90%;
+  width: 80%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -132,14 +140,20 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  font-family: 'GothicA1-Light';
   align-items: center;
 }
+.home-info-text h1{  
+  font-family: 'GothicA1-Light';
+}
+
 .home-info-text p{
   margin-top: 2%;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'GothicA1-Light';
+  text-align: center;
+  /* font-family: 'GothicA1-Light'; */
   color: white;
 }
 

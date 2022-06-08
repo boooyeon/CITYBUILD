@@ -36,12 +36,14 @@ def mypage(request):
 
 def reports_create(request):
     if request.method == 'POST':
-        lane_id = request.POST.get('lane_id')
+        pk = int(request.POST.get('lane_id',""))
+        lane = Lane.objects.get(id=pk)
+        
         content = request.POST.get('content')
         report_img = request.POST.get('report_img')
-        print(lane_id, content, report_img)
+        print(lane, content, report_img)
 
-        report = Report.objects.create(lane_id=lane_id, content=content, report_img=report_img)
+        report = Report.objects.create(lane_id=lane, content=content, report_images=report_img)
         report.save()
         
         return render(request, 'Mainapp/main.html')
