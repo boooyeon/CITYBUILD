@@ -90,6 +90,6 @@ button#address_search{width: 50px; height: 30px; background-color: gainsboro; bo
 .desc .ellipsis {overflow: hidden;text-overflow: ellipsis;white-space: nowrap; margin-top: 220px; font-size:1rem;}
 .desc .jibun {font-size: 11px;color: #888;margin-top: -2px;}
 .info .img {position: absolute;top: 6px;left: 5px;width: 340px;height: 200px;border: 1px solid #ddd;color: #888;overflow: hidden; background-size: cover;}
-.info:after {content: '';position: absolute; margin-left: -15px; left: 50%; bottom: 0;width: 22px;height: 12px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
+.info:after {content: '';position: absolute; margin-left: -42px; left: 50%; bottom: 0;width: 22px;height: 12px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
 .info .link {color: #5085BB;}
 
