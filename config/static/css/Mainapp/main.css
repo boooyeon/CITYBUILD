@@ -15,8 +15,6 @@ button#address_search{width: 50px; height: 30px; background-color: gainsboro; bo
 #placesList .item h5, #placesList .item .menu_info {text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
 #placesList .item .menu_info{padding:10px 0 10px 55px;}
 #placesList .info .gray {color:#8a8a8a;}
-#placesList .info .jibun {padding-left:26px;background:url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_jibun.png) no-repeat;}
-#placesList .info .tel {color:#009900;}
 #placesList .item .markerbg {float:left;position:absolute;width:36px; height:37px;margin:10px 0 0 10px;background:url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png) no-repeat;}
 #placesList .item .marker_1 {background-position: 0 -10px;}
 #placesList .item .marker_2 {background-position: 0 -56px;}
@@ -90,6 +88,67 @@ button#address_search{width: 50px; height: 30px; background-color: gainsboro; bo
 .desc .ellipsis {overflow: hidden;text-overflow: ellipsis;white-space: nowrap; margin-top: 220px; font-size:1rem;}
 .desc .jibun {font-size: 11px;color: #888;margin-top: -2px;}
 .info .img {position: absolute;top: 6px;left: 5px;width: 340px;height: 200px;border: 1px solid #ddd;color: #888;overflow: hidden; background-size: cover;}
-.info:after {content: '';position: absolute; margin-left: -15px; left: 50%; bottom: 0;width: 22px;height: 12px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
+.info:after {content: '';position: absolute; margin-left: -42px; left: 50%; bottom: 0;width: 22px;height: 12px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
 .info .link {color: #5085BB;}
 
+/* 모달 창 디자인 */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+  }
+
+  .modal .bg {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+
+  .modalBox {
+    position: absolute;
+    background-color: #fff;
+    width: 500px;
+    height: 300px;
+    padding: 15px;
+    border-radius: 15px;
+    z-index: 5;
+  }
+
+  .modalBox button {
+    display: block;
+    width: 80px;
+    margin: 0 auto;
+  }
+
+  .hidden {
+    display: none;
+  }
+  .modalBox h1 {
+      font-size: 1.2rem;
+  }
+
+  .modalBox h2 {
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+}
+
+
+  .modalBox textarea {
+      resize: none;
+  }
+  .modalBox .report_text{
+        width: 500px;
+        height: 190px;
+  }
+
+  .modalBox .file_upload{
+      background-color: white;
+      margin-left: 0;
+      height: 20px;
+  }
