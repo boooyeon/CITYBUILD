@@ -1,7 +1,8 @@
+from tabnanny import check
 from django.shortcuts import render
 from django.core import serializers
 from django.http import HttpResponse
-from .models import Lane
+from .models import Lane, Report
 from django.db.models import Q
 
 
@@ -32,3 +33,18 @@ def main(request):
 
 def mypage(request):
     return render(request, 'Mainapp/mypage.html')
+
+def reports_create(request):
+    if request.method == 'POST':
+        lane_id = request.POST.get('lane_id')
+        content = request.POST.get('content')
+        report_img = request.POST.get('report_img')
+        print(lane_id, content, report_img)
+
+        report = Report.objects.create(lane_id=lane_id, content=content, report_img=report_img)
+        report.save()
+        
+        return render(request, 'Mainapp/main.html')
+
+    else: 
+        return render(request, 'Mainapp/main.html')

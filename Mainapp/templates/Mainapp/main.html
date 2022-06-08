@@ -29,15 +29,16 @@
         <div class="modalBox">
           <div class="report_title"><h1>지도 정보 수정</h1></div>
           <div class="report_content">
-            <form method="post">
+            <form action="{% url 'report' %}" method="post">
                 {% csrf_token %}
                 <h2>수정 요청</h2>
-                <textarea type="text" class="report_text" placeholder="지도 정보에 문제가 있으신가요? 문의사항을 자유롭게 작성해주세요. &#13;&#10;-대구광역시 북구 대현로 며칠전에 차선 도색 되었어요.&#13;&#10;-대구광역시 북구 석형동 차선 손상이 심해요."></textarea>
+                <input type="hidden" id="gameToken" name="lane_id" value="{{ lane_id.id }}">
+                <textarea type="text" name="content" class="report_text" placeholder="지도 정보에 문제가 있으신가요? 문의사항을 자유롭게 작성해주세요. &#13;&#10;-대구광역시 북구 대현로 며칠전에 차선 도색 되었어요.&#13;&#10;-대구광역시 북구 석형동 차선 손상이 심해요."></textarea>
                 <h2>파일 업로드</h2>
-                <input type="file" class="file_upload"> 
+                <input type="file" name="report_img" class="file_upload">
+                <button type="submit" class="closeBtn">신고 하기</button> 
             </form>
           </div>
-          <button class="closeBtn">신고 하기</button>
         </div>
     </div>
 
