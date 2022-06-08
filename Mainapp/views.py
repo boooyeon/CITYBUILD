@@ -33,7 +33,11 @@ def main(request):
     return render(request, 'Mainapp/main.html')
 
 def mypage(request):
-    return render(request, 'Mainapp/mypage.html')
+    user = request.user.id
+
+    user_scraps = Scrap.objects.filter(user_id=user)
+    print(user_scraps)
+    return render(request, 'Mainapp/mypage.html', {'user_scraps':user_scraps})
 
 def reports_create(request):
     if request.method == 'POST':
