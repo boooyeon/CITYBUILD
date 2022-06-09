@@ -119,6 +119,14 @@ button#address_search{width: 50px; height: 30px; background-color: gainsboro; bo
     border-radius: 15px;
     z-index: 5;
   }
+  .modalBox .report_title{
+    display: flex;
+    flex-direction: row;
+  }
+  #modal_closeBtn{
+    width: 15px;
+    margin-left: 350px;
+  }
 
   .modalBox button {
     display: block;
