@@ -185,40 +185,62 @@
         bookmark.className = "bookmark";
 
         var bookmark_before_img = document.createElement("img");
-        bookmark_before_img.setAttribute("src", "/static/img/bookmark-before.png");
-        bookmark_before_img.setAttribute("id", "before_img");
+
+        $.ajax({
+            url: "{% url 'scrap' %}",
+            async : false,
+            type : "post",
+            data :  {
+                    part : 1,
+                    pk : pk,
+                    },
+            dataType: "json",
+            error: function (result) {
+                console.log('error')
+                },
+            success: function (result) {
+                if (result.status == 'yes') {
+                    bookmark_before_img.setAttribute("src", "/static/img/bookmark-after.png");
+                    } else {
+                    bookmark_before_img.setAttribute("src", "/static/img/bookmark-before.png");
+                    }
+                }
+        })
+
+        
+        bookmark_before_img.setAttribute("id", "before_img"+pk);
         
         bookmark_before_img.setAttribute("width","17");
         bookmark_before_img.setAttribute("height","17");
         bookmark.appendChild(bookmark_before_img);
 
         /* 북마크 이벤트 추가 */
-        var cnt = 1;
         bookmark.onclick = function() {
             console.log("북마크버튼 클릭")
-            var lane_id = pk
-            // console.log(lane_id)
-            var img1 = document.getElementById("before_img")
-            
-            if(cnt%2==1){
-                img1.src="/static/img/bookmark-after.png";
-            }    
-            else{
-                img1.src="/static/img/bookmark-before.png";
-            }
-            cnt++;
 
             $.ajax({
                 url: "{% url 'scrap' %}",
                 async : false,
                 type : "post",
                 data :  {
+                        part : 2,
                         pk : pk,
-                        cnt : cnt
                         },
                 dataType: "json",
-                })
-            
+                error: function (result) {
+                    console.log('error')
+                    },
+                success: function (result) {
+                    if (result.status == 'create') {
+                        var img1 = document.getElementById("before_img"+pk);
+                        img1.src="/static/img/bookmark-after.png";
+                        
+                        } else {
+                        var img1 = document.getElementById("before_img"+pk);
+                        img1.src="/static/img/bookmark-before.png";
+                        }
+                    }
+            })            
         };
         
         // closeBtn div 생성
@@ -352,7 +374,6 @@
                     '    <span>' + "경도: " + data.longitude+ '</span>'+
                     '</div>';
                 
-                                      
         el.innerHTML = itemStr;
         el.className = 'item';
 

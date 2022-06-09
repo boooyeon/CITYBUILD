@@ -1,7 +1,7 @@
 from tabnanny import check
 from django.shortcuts import render
 from django.core import serializers
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from Accountsapp.models import User
 from .models import Lane, Report, Scrap
 from django.db.models import Q
@@ -59,21 +59,35 @@ def reports_create(request):
 def scrap(request):
     if request.method == 'POST':
         pk = int(request.POST.get('pk',""))
-        cnt = int(request.POST.get('cnt',""))
+        part = request.POST.get('part',"")
+
         lane = Lane.objects.get(id=pk)
         
         user_id = request.user.id
         user = User.objects.get(id=user_id)
-        print(cnt, lane, user)
 
-        if(cnt%2==1):
-            scrap = Scrap.objects.get(lane_id=lane, user_id=user)
-            scrap.delete()
-            return render(request, 'Mainapp/main.html')
+        if part == "1":
+            try:
+                # 객체가 있다면
+                Scrap.objects.get(lane_id=lane, user_id=user)
+                return JsonResponse({'status':'yes'})
+            
+            except:
+                # 객체가 없다면
+                return JsonResponse({'status':'no'})
+        
         else:
-            scrap = Scrap.objects.create(lane_id=lane, user_id=user)
-            scrap.save()
-            return render(request, 'Mainapp/main.html')
+            try:
+                scrap = Scrap.objects.get(lane_id=lane, user_id=user)
+                scrap.delete()
+                return JsonResponse({'status':'delete', 'pk':pk})
+            
+            except:
+                scrap = Scrap.objects.create(lane_id=lane, user_id=user)
+                scrap.save()
+                return JsonResponse({'status':'create', 'pk':pk})
+            
+
         
 
         
