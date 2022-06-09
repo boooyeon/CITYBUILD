@@ -28,6 +28,7 @@ def get_secret(setting, secrets):
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_FILE = os.path.join(BASE_DIR, 'secrets.json')
+DATABASES_FILE = os.path.join(BASE_DIR, 'databases.json')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -35,12 +36,15 @@ SECRET_FILE = os.path.join(BASE_DIR, 'secrets.json')
 with open(SECRET_FILE) as f:
     secret = json.loads(f.read())
 
+with open(DATABASES_FILE) as f:
+    db = json.loads(f.read())
+
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = get_secret("SECRET_KEY", secret)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['211.34.246.146', 'www.lanedetector.tk', 'lanedetector.tk']
 
 # Application definition
 
@@ -92,8 +96,12 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': db.get('SQL_ENGINE'),
+        'NAME': db.get('SQL_DATABASE'),
+        'USER': db.get('SQL_USER'),
+        'PASSWORD': db.get('SQL_PASSWORD'),
+        'HOST': db.get('SQL_HOST'),
+        'PORT': db.get('SQL_PORT'),
     }
 }
 
@@ -138,7 +146,6 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
 
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')

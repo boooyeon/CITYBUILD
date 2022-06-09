@@ -7,7 +7,6 @@ class Lane(models.Model):
     damage = models.IntegerField()
     images = models.ImageField(blank=True, upload_to="images", null=True)
     road_address = models.CharField(max_length=64)  # 도로명주소
-    # is_error = models.BooleanField(default=False)
 
     class Meta:
         db_table = 'Lane'

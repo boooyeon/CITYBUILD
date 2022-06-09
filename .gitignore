@@ -369,5 +369,7 @@ fabric.properties
 
 # Secrets Files
 secrets.json
+databases.json
 
+csv/
 # End of https://www.toptal.com/developers/gitignore/api/python,django,visualstudiocode,pycharm+all
