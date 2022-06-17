@@ -86,8 +86,8 @@
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
         mapOption = {
             mapTypeId: kakao.maps.MapTypeId.SKYVIEW,
-            center: new kakao.maps.LatLng(35.8869058, 128.6025495), // 지도의 중심좌표
-            level: 1 // 지도의 확대 레벨
+            center: new kakao.maps.LatLng(35.8605262889259, 128.5923020419), // 지도의 중심좌표
+            level: 5 // 지도의 확대 레벨
     };  
 
     // 지도를 생성합니다    
@@ -272,7 +272,11 @@
         body.appendChild(img);
 
         var body_img = document.createElement("img");
+<<<<<<< HEAD
         body_img.setAttribute("src", "/static/img/repair-1.png");
+=======
+        body_img.setAttribute("src", "http://lanedetector.tk:8000/main/img/"+data.latitude+"&"+data.longitude+"/");
+>>>>>>> 9cb67f699bfde0ba98625385555472c3c01661c7
         body_img.setAttribute("width","340");
         body_img.setAttribute("height","200");
         img.appendChild(body_img);

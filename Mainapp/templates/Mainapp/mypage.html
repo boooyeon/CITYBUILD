@@ -1,17 +1,26 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+<<<<<<< HEAD
     <link rel="stylesheet" href="{% static 'css/config/style.css' %}"/>
     <link rel="stylesheet" href="{% static 'css/config/footer.css' %}"/>
     <link rel="stylesheet" href="{% static 'css/config/header.css' %}"/>
     <link rel="stylesheet" href="{% static 'css/Mainapp/mypage.css' %}"/>
 
+=======
+    <link rel="stylesheet" href="{% static 'css/config/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/config/footer.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/config/header.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/Mainapp/mypage.css' %}" />
+>>>>>>> 9cb67f699bfde0ba98625385555472c3c01661c7
 </head>
+
 <body>
     <!-- {% include 'header.html' %} -->
     <div class="header_container">
@@ -19,20 +28,18 @@
     </div>
     <div class="row">
         {% for scrap in user_scraps.all %}
-            <div class="container">
-                <h3>위도: {{ scrap.lane_id.latitude }}</h3>
-                <h3>경도: {{ scrap.lane_id.longitude }}</h3>
-                <h3>주소: {{ scrap.lane_id.road_address }} 인근</h3>
-                <div><img id="mypage_img" src="{% static 'img/repair-1.png' %}" width="300px" height="300px" alt="..."/></div>
-            </div>
+        <div class="container">
+            <h3>위도: {{ scrap.lane_id.latitude }}</h3>
+            <h3>경도: {{ scrap.lane_id.longitude }}</h3>
+            <h3>주소: {{ scrap.lane_id.road_address }} 인근</h3>
+            <div><img id="mypage_img" src="{% url 'img_load' scrap.lane_id.latitude scrap.lane_id.longitude %}"
+                    width="300px" height="300px" alt="..." /></div>
+        </div>
         {% endfor %}
     </div>
     <div class="download">
         <button id="download_btn" class="w-btn w-btn-indigo" type="button" onclick="location.href='' ">csv로 내려 받기</button>
     </div>
 </body>
+
 </html>
-
-
-
-
