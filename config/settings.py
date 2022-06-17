@@ -49,6 +49,7 @@ ALLOWED_HOSTS = [
     "www.lanedetector.tk",
     "lanedetector.tk",
     "localhost",
+    '127.0.0.1'
 ]
 
 # Application definition
