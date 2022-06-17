@@ -134,10 +134,6 @@
 
     // 지도에 마커를 표시하는 함수입니다 
 
-
-
-
-
 function displayMarker(data, pk) {
         var marker = new kakao.maps.Marker({
             map: map,
@@ -160,18 +156,67 @@ function displayMarker(data, pk) {
 
         kakao.maps.event.addListener(marker, 'click', function() {
             overlay.setMap(map);
+
+            // 클릭했을때만 통신
+            var bookmark_before_img = document.createElement("img");
+            $.ajax({
+                url: "{% url 'scrap' %}",
+                async : false,
+                type : "post",
+                data :  {
+                        part : 1,
+                        pk : pk,
+                        },
+                dataType: "json",
+                error: function (result) {
+                    console.log('error')
+                    },
+                success: function (result) {
+                    if (result.status == 'yes') {
+                        bookmark_before_img.setAttribute("src", "/static/img/bookmark-after.png");
+                        } else {
+                        bookmark_before_img.setAttribute("src", "/static/img/bookmark-before.png");
+                        }
+                    }
+            })
+
+        
+        bookmark_before_img.setAttribute("id", "before_img"+pk);
+        
+        bookmark_before_img.setAttribute("width","17");
+        bookmark_before_img.setAttribute("height","17");
+        
+        // 북마크 이미지가 없는경우에만 새로 생성하기
+        if(document.getElementById("before_img"+pk) == undefined) {
+            bookmark.appendChild(bookmark_before_img);
+        }
+
+        var img = document.createElement('div');
+        img.className = "img";
+        body.appendChild(img);
+
+        var body_img = document.createElement("img");
+        body_img.setAttribute("src", "http://lanedetector.tk:8000/main/img/"+data.latitude+"&"+data.longitude+"/");
+        body_img.setAttribute("width","340");
+        body_img.setAttribute("height","200");
+        img.appendChild(body_img);
         });
-
-
-
-        {% comment %} // content HTMLElement 생성
-
 
         // title div 생성 -> 주소, report, bookmark, closeBtn 내용 포함
         var title = document.createElement('div');
-        title.className = "title";        
+        title.className = "title";
         title.appendChild(document.createTextNode(data.road_address + ' 인근'));
         
+        // closeBtn div 생성
+        var closeBtn = document.createElement('div');
+        closeBtn.className = "close";
+
+        // 닫기 이벤트 추가
+        closeBtn.onclick = function() {
+
+            overlay.setMap(null);
+        };
+
         // report div 생성
         var report = document.createElement('div');
         report.className = "report";
@@ -201,41 +246,34 @@ function displayMarker(data, pk) {
             modal.classList.add("hidden");
         };
 
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
         // bookmark div 생성
         var bookmark = document.createElement('div');
         bookmark.className = "bookmark";
 
-        var bookmark_before_img = document.createElement("img");
 
-        $.ajax({
-            url: "{% url 'scrap' %}",
-            async : false,
-            type : "post",
-            data :  {
-                    part : 1,
-                    pk : pk,
-                    },
-            dataType: "json",
-            error: function (result) {
-                console.log('error')
-                },
-            success: function (result) {
-                if (result.status == 'yes') {
-                    bookmark_before_img.setAttribute("src", "/static/img/bookmark-after.png");
-                    } else {
-                    bookmark_before_img.setAttribute("src", "/static/img/bookmark-before.png");
-                    }
-                }
-        })
+        title.appendChild(closeBtn);
+        title.appendChild(report);
+        title.appendChild(bookmark);
 
+        // 모든 내용이 담긴 title div를 title의 부모 div인 info div에 넣기
+        info.appendChild(title);
         
-        bookmark_before_img.setAttribute("id", "before_img"+pk);
+        var body = document.createElement('div');
+        body.className = "body";
+        info.appendChild(body);
+
+
+
+        var desc = document.createElement('div');
+        desc.className = "desc";
+        body.appendChild(desc);
+
+        var ellipsis = document.createElement('div');
+        ellipsis.className = "ellipsis";
+        ellipsis.appendChild(document.createTextNode('위도: ' + data.latitude + ' '));
+        ellipsis.appendChild(document.createTextNode('경도: ' + data.longitude));
         
-        bookmark_before_img.setAttribute("width","17");
-        bookmark_before_img.setAttribute("height","17");
-        bookmark.appendChild(bookmark_before_img);
+        desc.appendChild(ellipsis);
 
         /* 북마크 이벤트 추가 */
         bookmark.onclick = function() {
@@ -265,54 +303,9 @@ function displayMarker(data, pk) {
                     }
             })
         };
-        
-        ///////////////////////////////////////////////////////////////////////////////////////////
 
-
-        // closeBtn div 생성
-        var closeBtn = document.createElement('div');
-        closeBtn.className = "close";
-
-        // 닫기 이벤트 추가
-        closeBtn.onclick = function() {
-            overlay.setMap(null);
-        };
-
-        title.appendChild(closeBtn);
-        title.appendChild(report);
-        title.appendChild(bookmark);
-
-        // 모든 내용이 담긴 title div를 title의 부모 div인 info div에 넣기
-        info.appendChild(title);
-        
-        var body = document.createElement('div');
-        body.className = "body";
-        info.appendChild(body);
-
-        var img = document.createElement('div');
-        img.className = "img";
-        body.appendChild(img);
-
-        var body_img = document.createElement("img");
-        body_img.setAttribute("src", "http://lanedetector.tk:8000/main/img/"+data.latitude+"&"+data.longitude+"/");
-        body_img.setAttribute("width","340");
-        body_img.setAttribute("height","200");
-        img.appendChild(body_img);
-
-        var desc = document.createElement('div');
-        desc.className = "desc";
-        body.appendChild(desc);
-
-        var ellipsis = document.createElement('div');
-        ellipsis.className = "ellipsis";
-        ellipsis.appendChild(document.createTextNode('위도: ' + data.latitude + ' '));
-        ellipsis.appendChild(document.createTextNode('경도: ' + data.longitude));
-        
-        desc.appendChild(ellipsis);
-        
-        {% endcomment %}
     }
-    
+
 
     /* 검색한 마커 찍기 -> 검색한 마커를 메뉴와 지도에 표시하는 함수입니다 */ 
     function displaySearchMarker(data) { 
