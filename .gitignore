@@ -371,6 +371,9 @@ fabric.properties
 secrets.json
 databases.json
 
+# Databases Files
+databases.json
+
 csv/
 nohup.out
 # End of https://www.toptal.com/developers/gitignore/api/python,django,visualstudiocode,pycharm+all
