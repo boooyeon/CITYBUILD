@@ -29,3 +29,12 @@ body{
     z-index: 5;
 }
 
+#download_btn{
+    width: 120px;
+    height: 30px;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    background-color: white;
+    border-radius: 5px;
+}
