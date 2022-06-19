@@ -15,7 +15,6 @@ import urllib
 import csv
 
 
-
 def getApi(request):
     lanes = Lane.objects.all()
     lane_list = serializers.serialize("json", lanes)
@@ -58,10 +57,10 @@ def scrap_download(request):
             ignore_index=True,
         )
 
-    response = HttpResponse(content_type="text/csv")
+    response = HttpResponse(content_type="text/csv; charset='utf-8-sig")
     response["Content-Disposition"] = f"attachment; filename={datetime.now()}.csv"
 
-    info.to_csv(path_or_buf=response, sep=",", index=True)
+    info.to_csv(path_or_buf=response, sep=",", index=True, encoding="utf-8-sig")
     return response
 
 
@@ -79,6 +78,7 @@ def reports_create(request):
 
         content = request.POST.get("content")
         report_img = request.POST.get("report_img")
+        # report_img = request.FILES['report_img']
         print(lane, content, report_img)
 
         report = Report.objects.create(
@@ -163,3 +163,10 @@ def img_load(request, lat, lon):
             img = f.read()
 
     return HttpResponse(img, content_type="image/jpg")
+
+
+def del_scrap(request, lane_id):
+    user_id = request.user.id
+    del_scrap = Scrap.objects.get(user_id=user_id, lane_id=lane_id)
+    del_scrap.delete()
+    return redirect("mypage")

@@ -28,7 +28,10 @@ body{
     box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
     z-index: 5;
 }
-
+.scrap_menubar{
+    width: 90%;
+    
+}
 #download_btn{
     width: 120px;
     height: 30px;
@@ -37,4 +40,15 @@ body{
     bottom: 10px;
     background-color: white;
     border-radius: 5px;
+}
+.delete{
+    border: 0;
+    outline: 0;
+    margin-top: 5px;
+    background-color: white;
+}
+
+#delete_btn{
+    width: 25px;
+    height: 25px;
 }

@@ -22,6 +22,9 @@
     <div class="row">
         {% for scrap in user_scraps.all %}
         <div class="container">
+            <div class="scrap_menubar">
+                <button type="button" class="delete" onclick="scrap_del('{% url 'del_scrap' scrap.lane_id.id %}');"><img id="delete_btn" src="{% static 'img/delete.png' %}"></button>
+            </div>
             <h3>위도: {{ scrap.lane_id.latitude }}</h3>
             <h3>경도: {{ scrap.lane_id.longitude }}</h3>
             <h3>주소: {{ scrap.lane_id.road_address }} 인근</h3>
@@ -35,7 +38,15 @@
             onClick="location.href='{% url 'getCsv' %}'">csv로 내려 받기
         </button>
 
-    </div>
+    </div> 
 </body>
-
+<script>
+    function scrap_del(url){
+          var res = confirm('게시글을 정말로 삭제하시겠습니까?');
+          if(res){
+            window.location.href = url
+            alert("성공적으로 삭제되었습니다.");
+          }
+        }
+    </script>
 </html>

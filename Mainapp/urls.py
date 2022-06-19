@@ -11,4 +11,5 @@ urlpatterns = [
     path("add_db/", Mainapp.views.add_db, name="add_db"),
     path("img/<str:lat>&<str:lon>/", Mainapp.views.img_load, name="img_load"),
     path("getCsv/", Mainapp.views.scrap_download, name="getCsv"),
+    path("del_scrap/<int:lane_id>", Mainapp.views.del_scrap, name="del_scrap"),
 ]
