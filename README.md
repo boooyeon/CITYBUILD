@@ -181,7 +181,11 @@
 
 python -m venv (가상환경이름)
 
-#### 2. 필요 라이브러리 설치
+#### 2. 가상환경 실행
+
+source .venv/bin/activate
+
+#### 3. 필요 라이브러리 설치
 
 pip install -r requirments.txt
 
