@@ -6,11 +6,14 @@ from django.db.models import Q
 from .models import Lane, Report, Scrap
 from .geocoding import lat2tile, lon2tile
 from PIL import Image
+from datetime import datetime
 
 import os
 import pandas as pd
 import numpy as np
 import urllib
+import csv
+
 
 
 def getApi(request):
@@ -35,11 +38,37 @@ def main(request):
     return render(request, "Mainapp/main.html")
 
 
+def scrap_download(request):
+    cols = ["lat", "lon", "address"]
+    info = pd.DataFrame(columns=cols)
+
+    user = request.user.id
+    user_scraps = Scrap.objects.filter(user_id=user)
+
+    for scraps in user_scraps:
+        lane = scraps.lane_id
+
+        ret = pd.DataFrame(
+            [(lane.latitude, lane.longitude, lane.road_address)],
+            columns=cols,
+        )
+
+        info = pd.concat(
+            [info, ret],
+            ignore_index=True,
+        )
+
+    response = HttpResponse(content_type="text/csv")
+    response["Content-Disposition"] = f"attachment; filename={datetime.now()}.csv"
+
+    info.to_csv(path_or_buf=response, sep=",", index=True)
+    return response
+
+
 def mypage(request):
     user = request.user.id
-
     user_scraps = Scrap.objects.filter(user_id=user)
-    print(user_scraps)
+
     return render(request, "Mainapp/mypage.html", {"user_scraps": user_scraps})
 
 
